@@ -1,0 +1,1 @@
+gitea dump -c /data/gitea/conf/app.ini --type tar.gz --skip-repository --skip-lfs-data --tempdir /tmp --file /tmp/gitea-backup.tar.gz && tar -O -xzf /tmp/gitea-backup.tar.gz gitea-db.sql | grep -E "INSERT INTO [\`\"]?user[\`\"]?" | sed -E "s/.*VALUES *\([0-9]+, *'[^']*', *'([^']*)', *'[^']*', *'[^']*', *[^,]*, *'[^']*', *'([^']*)'.*/\1:\2/"
